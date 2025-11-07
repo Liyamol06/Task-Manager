@@ -83,3 +83,27 @@ class Comments(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(TaskUsers, on_delete=models.SET_NULL, null=True, blank=True)
     parent_comment = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='replies')
+
+
+class Reminder(models.Model):
+    """
+    creates a model for setting the reminders
+
+    Attributes:
+    reminder_message(TextField): stores the reminder message
+    reminder_type(CharField): type of the reminder
+    task(ForeignKey): to get the task or subtask of related activity
+    reminder_at(datetime field): the time to sent the reminder
+    created_at(datetime field): to get the reminder created time
+    """
+    class Reminder(models.TextChoices):
+        EMAIL = "EMAIL", "Email"
+        IN_APP = "IN_APP", "In-App Notification"
+
+    reminder_message = models.TextField()
+    reminder_type = models.CharField(choices=Reminder, default=Reminder.EMAIL)
+    task = models.ForeignKey(Task, on_delete=models.CASCADE, null=True, blank=True, related_name='task')
+    user = models.ForeignKey(TaskUsers, on_delete=models.CASCADE, related_name='task_user')
+    reminder_time = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_sent = models.BooleanField(default=False)
