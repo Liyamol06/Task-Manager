@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.sqlite3
+*.log
+
+# Environment
+.task
+task/
+
+# Django specific
+db.sqlite3
+/media/
+staticfiles/
+*.pot
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Migrations (optional)
+*/migrations/
+
+# PyTest / coverage
+.coverage
+.pytest_cache/
+htmlcov/
+
+#  Doc Files
+Task_Manager_Docs/
