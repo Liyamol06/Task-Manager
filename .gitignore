@@ -27,6 +27,9 @@ Thumbs.db
 
 # Migrations (optional)
 */migrations/
+*/migrations/*.py
+*/migrations/*.pyc
+!*/migrations/__init__.py
 
 # PyTest / coverage
 .coverage
